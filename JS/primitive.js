@@ -18,7 +18,7 @@ PRIMITIVE.set('symbol_key', Symbol.for('key'));
 
 export {PRIMITIVE};
 
-// Convert tests
+//Type Conversions tests
 let mapToString = new Map();
 let mapToNumeric = new Map();
 let mapToBoolean = new Map();
@@ -43,7 +43,9 @@ PRIMITIVE.forEach((value, key) => {
 
 console.log(mapToString,mapToNumeric,mapToBoolean);
 
-//interesting cases
+//Type Conversions 'in string' cases
+console.log(`1 + true + 2 * false => `, 1+true+2*false);
+console.log(`true - 0.5 => `, true-0.5);
 
 console.log(`1 + 1 + '1' + 1 + true => `, 1 + 1 + '1' + 1 + true);
 console.log(`!(1 + 1 + '1' + 1 + true) => `, !(1 + 1 + '1' + 1 + true));

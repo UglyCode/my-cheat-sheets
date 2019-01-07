@@ -8,7 +8,8 @@ PRIMITIVE.set('string_space', '   ');
 PRIMITIVE.set('string_empty', '');
 PRIMITIVE.set('numeric', 11);
 PRIMITIVE.set('numeric_zero', 0);
-PRIMITIVE.set('numric_nan', NaN);
+PRIMITIVE.set('numeric_nan', NaN);
+PRIMITIVE.set('numeric_infinity', Infinity);
 PRIMITIVE.set('boolean_true', true);
 PRIMITIVE.set('boolean_false', false);
 PRIMITIVE.set('undefined', undefined);
@@ -19,9 +20,9 @@ PRIMITIVE.set('symbol_key', Symbol.for('key'));
 export {PRIMITIVE};
 
 //Type Conversions tests
-let mapToString = new Map();
-let mapToNumeric = new Map();
-let mapToBoolean = new Map();
+let mapToString = new Map([['description','toString']]);
+let mapToNumeric = new Map([['description','toNumeric']]);
+let mapToBoolean = new Map([['description','toBoolean']]);
 
 PRIMITIVE.forEach((value, key) => {
     try {
@@ -59,3 +60,4 @@ console.log(`1 + !!(1+false) + !!'0' + '1' - 5 => `, 1 + !!(1+false) + !!'0' + '
 console.log(`1 + 2 > 3 * 3 => `, 1 + 2 > 3 * 3);
 console.log(`1 + (2 > 3) * 3 => `, 1 + (2 > 3) * 3);
 
+console.log('');

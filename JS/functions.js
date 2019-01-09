@@ -1,5 +1,5 @@
 "use strict";
-console.log('======================= Objects & functions module load =======================');
+console.log('======================= Functions module load =======================');
 
 function foo(a,b) {
     if (a>b) {

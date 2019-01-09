@@ -17,6 +17,7 @@ const variConst1 = 'anywhere_const';
     print(); // let2 & const2 didn't define in function print
 }
 
+
 function foo() {
     var variVar1 = 'infunction_replacement';
     let variLet1 = 'infunction_replacement';
@@ -58,10 +59,12 @@ function print() {
 
     types.forEach((value)=>{
         for (let i = 1; i < 4; i++) {
+
+            const printSubstring =`${p}: ${value}${i}:`;
             try {
-                console.log(`${p}: ${value}${i}:  ${eval('vari'+value+i)}`);
+                console.log(`${printSubstring} ${eval('vari'+value+i)}`);
             } catch (e) {
-                console.log(`${p}: ${value}${i}:  ${e.name}`);
+                console.log(`${printSubstring} ${e.name}`);
             }
         }
     });

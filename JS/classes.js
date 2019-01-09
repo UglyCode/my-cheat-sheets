@@ -1,7 +1,7 @@
 'use strict';
 console.log('======================= Clases =======================');
 
-class Jopa {
+class Ass {
     constructor(x, y, z){
         this._x = x;
         this._y = y;
@@ -10,13 +10,13 @@ class Jopa {
     }
 
     fart(){
-        console.log(`hello, I am jopa: ${this._volume} meters`);
-        return this._volume + 'jop';
+        console.log(`hello, I am ass: ${this._volume} meters`);
+        return this._volume + ' ass';
     }
 }
 
-let bigJopa = new Jopa(100,100,100, 10000101, 'jop');
+let bigAss = new Ass(100,100,100, 10000101, 'lalalala');
 
-bigJopa.fart();
+bigAss.fart();
 
-export {bigJopa};
+export {bigAss};

@@ -1,6 +1,7 @@
 'use strict';
 console.log('======================= Scope of variables module load =======================');
 var p =1;
+const types = ['Var','Let','Const'];
 print(); //vars  $ undefined, lets and consts - error.
 
 var variVar1 = 'anywhere_var';
@@ -17,10 +18,13 @@ const variConst1 = 'anywhere_const';
 }
 
 function foo() {
+    var variVar1 = 'infunction_replacement';
+    let variLet1 = 'infunction_replacement';
+
     var variVar3 = 'function_var'; // not defined outside function, even at other functions. called from here
     let variLet3 = 'function_let'; // not defined outside function, even at other functions. called from here
     const variConst3 = 'function_const'; // not defined outside function, even at other functions. called from here
-    console.log(`In function: ${variVar3}, ${variLet3}, ${variConst3}.` );
+    console.log(`In function: ${variVar3}, ${variLet3}, ${variConst3} && oldones: ${variVar1}, ${variLet1}.` );
 
     print();
 }
@@ -51,21 +55,17 @@ console.log(`After loops: ${variVar1}, ${variLet1}, ${variConst1}.` );
 print(); // var 3 not defined - infunction var scope.
 
 function print() {
-    try {
-        console.log(`${p}: var[1-3]:  ${variVar1}, ${variVar2}, ${variVar3}`);
-    } catch (e) {
-        console.log(e);
-    }
-    try {
-        console.log(`${p}: let[1-3]:  ${variLet1}, ${variLet2}, ${variLet3}`);
-    } catch (e) {
-        console.log(e);
-    }
-    try {
-        console.log(`${p}: const[1-3]:  ${variConst1}, ${variConst2}, ${variConst3}`);
-    } catch (e) {
-        console.log(e);
-    }
+
+    types.forEach((value)=>{
+        for (let i = 1; i < 4; i++) {
+            try {
+                console.log(`${p}: ${value}${i}:  ${eval('vari'+value+i)}`);
+            } catch (e) {
+                console.log(`${p}: ${value}${i}:  ${e.name}`);
+            }
+        }
+    });
+
     console.log('end of print ' + p++);
 }
 

@@ -33,7 +33,7 @@ function Clock({ template }) {
 }
 Clock._timer = undefined;
 
-Clock.prototype.render = function() {
+Clock.prototype._render = function() {
     let date = new Date();
 
     let hours = date.getHours();
@@ -58,9 +58,8 @@ Clock.prototype.stop = function() {
 };
 
 Clock.prototype.start = function() {
-    let render = this.render.bind(this);
-    render();
-    this._timer = setInterval(render, 1000);
+    this._render();
+    this._timer = setInterval(() => this._render, 1000);
 };
 
 

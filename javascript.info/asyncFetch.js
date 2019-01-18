@@ -1,4 +1,6 @@
 'use strict';
+// const fetch = require('node-fetch');
+
 let urls = [
     'https://api.github.com/users/iliakan',
     'https://api.github.com/users/remy',
@@ -16,15 +18,15 @@ Promise.all(urls.map((url)=>{
         console.log('Logged: ' + responses[2]); // TypeError: failed to fetch (text may vary)
     });
 
-//
-// let urls2 = [
-//     'https://api.github.com/users/iliakan',
-//     'https://api.github.com/users/remy',
-//     'https://api.github.com/users/jeresig'
-// ];
+
+let urls2 = [
+    'https://api.github.com/users/iliakan',
+    'https://api.github.com/users/remy',
+    'https://api.github.com/users/jeresig'
+];
 
 // make fetch requests
-Promise.all(urls.map(url => {
+Promise.all(urls2.map(url => {
     return fetch(url)
         .catch(promosifyError)
     }
@@ -32,8 +34,11 @@ Promise.all(urls.map(url => {
 // map each response to response.json()
     .then(responses => Promise.all(
         responses.map(r => {
-            return r.json()
-                .catch(promosifyError)
+            try {
+                return r.json()
+            } catch (e) {
+                return promosifyError(e)
+            }
         })
     ))
     // show name of each user

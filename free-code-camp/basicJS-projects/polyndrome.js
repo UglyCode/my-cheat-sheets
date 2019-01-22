@@ -9,8 +9,8 @@ function palindrome(str) {
     return true;
 }
 
-
-
 console.log(palindrome("euyue"));
 console.log(palindrome("jopa"));
 console.log(palindrome("ollo"));
+console.log(palindrome("oliLlo"));
+

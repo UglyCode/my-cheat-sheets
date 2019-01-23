@@ -1,9 +1,9 @@
 function telephoneCheck(str) {
 
     let strClear = str.replace(/[^0-9() \-]/g, '');
-    if (strClear.length !== str.length) return false;
-    let br = strClear.indexOf(')') - strClear.indexOf('(');
-    if (br !== 3 && br !== 0) return false;
+    if (strClear.length !== str.length || str[0]==='-') return false;
+    let br = strClear.indexOf(')') - strClear.indexOf('(') ;
+    if (!(strClear.indexOf('(') >= 0 && br === 4 || br===0)) return false;
 
     strClear = strClear.replace(/[^0-9]/g,'');
 
@@ -17,5 +17,5 @@ function telephoneCheck(str) {
     }
 }
 
-console.log(telephoneCheck("1 555)555-5555"));
-console.log(telephoneCheck("123**&!!asdf#"));
+telephoneCheck("(555)555-5555");
+telephoneCheck("-1 (757) 622-7382");

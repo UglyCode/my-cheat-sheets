@@ -16,6 +16,3 @@ function telephoneCheck(str) {
             return false;
     }
 }
-
-telephoneCheck("(555)555-5555");
-telephoneCheck("-1 (757) 622-7382");

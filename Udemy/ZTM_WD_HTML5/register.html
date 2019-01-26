@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register, pleese</title>
+</head>
+<body>
+<p>Inline<span> span </span> tag</p>
+<div>
+    <form method="GET" action="somenewpage.html">
+        <!--test for page to register-->
+        name: <input type="text" name="name">
+        another name: <input type="text" name="name2"><br>
+        e-mail: <input type="email" required name="mail"><br>
+        birthdate: <input type="date" name="bDate">
+        password: <input type="password" min="9" name="pwd"><br>
+        gender: <br>
+        <input type="radio" name="gerder" value="man">Male<br>
+        <input type="radio" name="gerder" value="female">Female<br>
+        <input type="radio" name="gerder" value="other">Other<br>
+        Cats:<br>
+        <input type="checkbox" name="big" >Big<br>
+        <input type="checkbox" name="tiny" >Tiny<br>
+        <input type="checkbox" name="fuzzy">Fuzzy<br>
+        Cars: <br>
+        <select name="car">
+            <option value="Mercedes">Mercedes</option>
+            <option value="BMW">BNV</option>
+        </select>
+        <hr>
+        <input type="submit" value="Register">
+        <input type="reset" value="Clear">
+    </form>
+</div>
+</body>
+</html>
+
+
+<!--
+?name=fake
+&name2=fakes
+&mail=fake%40mail.com
+&bDate=2019-01-11
+&pwd=123
+&gerder=man
+&big=on
+&fuzzy=on
+&car=Mercedes
+-->

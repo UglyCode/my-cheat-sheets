@@ -8,14 +8,14 @@ h1 {
 
 @media screen and (min-width: 1100px) {
   body {
-    background: url('./background.jpg') no-repeat center center fixed;
+    background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
   }
 }
 
 @media screen and (min-width: 3300px) {
   body {
-    background: url('./large-background.jpg') no-repeat center center fixed;
+    background: url('large-background.jpg') no-repeat center center fixed;
     background-size: cover;
   }
 }

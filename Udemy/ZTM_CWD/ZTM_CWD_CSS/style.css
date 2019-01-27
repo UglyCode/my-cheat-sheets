@@ -3,26 +3,45 @@ Selector {
     Property: value;
 }
 */
-body {
-    background-image: url();
+
+* {
+    text-align: right;
 }
 
-h2 {
-    color: red;
+
+body {
+    background-image: url(architecture-buildings-chicago-1622833.jpg);
+    background-size: cover;
+}
+
+h2, p {
+    color: #361356;
     text-align: center;
-    border: 5px dashed silver;
+    border: 5px dashed #9277AC;
     cursor: pointer;
 }
 
 p {
-    color: pink;
-}
-
-p {
-    color: forestgreen;
+    color: #512C73;
 }
 
 li {
     list-style: none;
     display: inline-block;
+}
+
+.la {
+    color: #000;
+}
+
+#one {
+    background-color: rgba(200,200,250,0.5);
+}
+
+div p {
+    text-align: left;
+}
+
+div > div {
+    background-color: silver;
 }

@@ -1,0 +1,28 @@
+/*
+Selector {
+    Property: value;
+}
+*/
+body {
+    background-image: url();
+}
+
+h2 {
+    color: red;
+    text-align: center;
+    border: 5px dashed silver;
+    cursor: pointer;
+}
+
+p {
+    color: pink;
+}
+
+p {
+    color: forestgreen;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+}

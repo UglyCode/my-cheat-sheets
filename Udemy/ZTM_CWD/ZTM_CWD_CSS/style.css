@@ -4,8 +4,24 @@ Selector {
 }
 */
 
+img {
+    width: 200px;
+    float: left;
+}
+
+div {
+    clear: both;
+}
+
 * {
-    text-align: right;
+    /*text-align: right;*/
+    /*text-decoration: line-through;*/
+    /*text-transform: capitalize;*/
+    /*line-height: 21px;*/
+    /*font-style: italic;*/
+    /*font-weight: bold;*/
+    /*font-size: 111%;*/
+    font-family: 'Roboto', sans-serif, "Trebuchet MS", Georgia;
 }
 
 

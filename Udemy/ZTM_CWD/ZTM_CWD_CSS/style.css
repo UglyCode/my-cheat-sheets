@@ -34,6 +34,10 @@ li {
     color: #000;
 }
 
+.la:first-child {
+    color: #0F0;
+}
+
 #one {
     background-color: rgba(200,200,250,0.5);
 }
@@ -44,4 +48,8 @@ div p {
 
 div > div {
     background-color: silver;
+}
+
+h2 + p:hover {
+    color: rgba(255,0,0,0.7);
 }

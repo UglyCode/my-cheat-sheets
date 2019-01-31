@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        #grey{
+            background-color: lightgray;
+            width: 500px;
+            height: 450px;
+            position: fixed;
+            top: 50px;
+            left: 150px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            /*margin: 15px;*/
+            border: 2px solid black;
+        }
+
+        .red {
+            background-color: red;
+            position: absolute;
+            left: 150px;
+        }
+
+        .green {
+            background-color: green;
+            margin: 10px;
+        }
+
+        .blue {
+            background-color: blue;
+            height: 50px;
+            width: 50px;
+            position: relative;
+            top: 55px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="grey">
+    <div class="red"></div>
+    <div class="green">
+        <div class="blue"></div>
+    </div>
+</div>
+</body>
+</html>

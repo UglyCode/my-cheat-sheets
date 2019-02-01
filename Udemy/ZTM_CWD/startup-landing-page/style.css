@@ -25,16 +25,24 @@ h1{
   flex-direction: column;
 }
 
-.btn{
+
+#mc_embed_signup{
   height: 70px;
   width: 70px;
   position: absolute;
   margin: auto;
-  top: 0; left: 10px; bottom: 110px; right: 0;
+  top: 0; left: 5px; bottom: 121px; right: 0;
+}
+
+.btn{
+  height: 70px;
+  width: 70px;
+  padding: 0px;
   border-radius: 35px;
   border-color: #9277AC;
   background-color: slateblue;
   transition: all 100ms;
+  font-weight: bold;
 }
 
 .btn:hover{

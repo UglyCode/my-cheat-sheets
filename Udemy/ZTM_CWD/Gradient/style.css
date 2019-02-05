@@ -25,3 +25,10 @@ h3 {
     letter-spacing: 0.01em;
 
 }
+
+#output {
+    background: lightblue;
+    width: 500px;
+    margin: 10px auto;
+    color: #361356;
+}

@@ -4,11 +4,6 @@ let color2 = document.getElementById('color2');
 let body =  document.getElementById('gradient');
 let randomButton = document.getElementById('random');
 
-
-console.log(output);
-console.log(color1);
-console.log(color2);
-
 function changeBackground(){
     let localGrafient = `linear-gradient(to right, ${color1.value}, ${color2.value})`;
     body.style.background = localGrafient;

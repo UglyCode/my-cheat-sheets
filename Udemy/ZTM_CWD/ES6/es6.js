@@ -53,3 +53,5 @@ const whereAmI = (username, location) => {
         return "I am totally lost!";
     }
 };
+
+const compose = (f,g) => (a) => f(g(a));

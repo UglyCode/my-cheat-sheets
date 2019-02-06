@@ -44,34 +44,28 @@ console.log(mapArray);
 
 //Filter the array to only include users who are on team: red
 
-const filterArray = array.fill(elem => elem.team === 'red');
+const filterArray = array.filter(elem => elem.team === 'red');
 
 console.log(filterArray);
 
 //Find out the total score of all users using reduce
 
-const usersCount = array.reduce((acc,elem)=> acc++,0);
+const usersCount = array.reduce((acc, elem)=> ++acc, 0);
 
 console.log(usersCount);
 
 
 // (1), what is the value of i?
 // (2), Make this map function pure:
-const arrayNum = [1, 2, 4, 5, 8, 9];
-const newArray = arrayNum.map((num, i) => {
-    return num * 2;
-});
+// const arrayNum = [1, 2, 4, 5, 8, 9];
+// const newArray = arrayNum.map((num, i) => {
+//     return num * 2;
+// });
 
 
 //BONUS: create a new list with all user information, but add "!" to the end of each items they own.
 const newArray = array.map(elem => {
-
+    return elem.items = elem.items.map(item => item + " !");
 });
 
-const answer = array.map(user => {
-    user.items = user.items.map(item => {
-        return item + "!"
-    });
-    return user;
-})
-console.log(answer);
+console.log(newArray, array);

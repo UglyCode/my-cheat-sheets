@@ -31,3 +31,14 @@ const cow = new Mammal('Holyhooo', 'brown', 'cow', 'female');
 
 cow.introduce();
 cow.feed();
+
+let obj = {
+    my: 'name',
+    is: 'Rudolf',
+    the: 'raindeer'
+}
+
+let stringObj = Object.entries(obj).reduce((acc, value)=>{
+    return acc+= ` ${value[0]} ${value[1]}`
+}, '');
+console.log(stringObj);

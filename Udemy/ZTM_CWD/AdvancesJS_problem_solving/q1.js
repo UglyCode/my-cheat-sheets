@@ -12,7 +12,7 @@ let arr2 = [1, "2", "3", 2];
 function clean(arr) {
 
     arr.sort((a,b)=>a-b);
-    let newArr = [[].push(arr[0])];
+    let newArr = [arr[0]];
     arr.reduce((acc,elem)=>{
 
         if (acc!==elem){
@@ -33,4 +33,25 @@ function clean(arr) {
     return newArr;
 }
 
+// bonus task solution added
+function advClean(arr) {
+
+    let stringArray = [];
+    let numberArray = [];
+
+    do {
+        let elem = arr.pop();
+        if (!elem) break;
+        if (Number(elem) !== elem) {
+            stringArray.push(elem);
+        } else
+            numberArray.push(elem)
+    } while (true);
+
+    return[clean(numberArray), clean(stringArray)];
+
+}
+
+
 console.log(clean(arr));
+console.log(advClean(arr2));

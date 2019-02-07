@@ -52,6 +52,5 @@ function advClean(arr) {
 
 }
 
-
 console.log(clean(arr));
 console.log(advClean(arr2));

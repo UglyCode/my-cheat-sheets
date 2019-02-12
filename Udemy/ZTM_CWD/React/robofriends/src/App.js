@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {robots} from "./robots";
 import CardList from "./CardList";
 import Searchbox from './Searchbox';
-
+import './App.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            robots: robots,
+            robots: [],
             searchfield: ''
         }
     }

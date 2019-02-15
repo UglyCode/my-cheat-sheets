@@ -16,14 +16,15 @@ class App extends Component {
         }
     }
 
-    async _updateSwapiUsers(){
-        const {swapiUsersCache, cardsAmount} = this.state;
+    async _updateSwapiUsers(amount){
+        const cardsAmount = Math.min(Math.max(amount, 5),25);
+        const {swapiUsersCache} = this.state;
 
         let fetchArr =[];
         const cacheLength = swapiUsersCache.length;
-        console.log(swapiUsersCache, cardsAmount, cacheLength);
 
         if (cacheLength < cardsAmount) {
+
             for (let i = cacheLength; i < cardsAmount; i++){
                 fetchArr.push(fetch(`https://swapi.co/api/people/${i+1}`)); //0 elem not defined at wsapi
             }
@@ -35,13 +36,12 @@ class App extends Component {
             this.setState({ swapiUsersCache: swapiUsersCache});
         }
 
-        console.log(swapiUsersCache.slice(0,cardsAmount));
         this.setState({actualUsers: swapiUsersCache.slice(0,cardsAmount)});
     }
 
     componentDidMount(){
 
-        this._updateSwapiUsers();
+        this._updateSwapiUsers(this.state.cardsAmount);
 
         // fetch('https://jsonplaceholder.typicode.com/users')
         //     .then(response => response.json())
@@ -50,27 +50,26 @@ class App extends Component {
 
     onSearchChange = (event) => {
         this.setState({searchfield: event.target.value});
-
     };
 
     onAmountChange = (event) => {
-        this.setState({cardsAmount: event.target.value});
-        console.log(event.target.value);
-        this._updateSwapiUsers();
+        const amount = event.target.value;
+        this.setState({cardsAmount: amount});
+        this._updateSwapiUsers(amount);
     };
 
 
     render() {
         const {actualUsers, searchfield, cardsAmount}  = this.state;
         const filteredRobo = actualUsers.filter(robo => {
-            return robo.name.toLowerCase().includes(searchfield)
+            return robo.name && robo.name.toLowerCase().includes(searchfield)
         });
         if (!actualUsers.length){
-            return <h1>Loading</h1>
+            return <h1 className='tc'>Loading</h1>
         }
         return (
             <div className='tc'>
-                <h1 className='f1'>Robofriends</h1>
+                <h1 className='f1'>ROBO STARS WAR</h1>
                 <div>
                 <Searchbox searchChange={this.onSearchChange}/>
                 <AmountBox amountChange={this.onAmountChange} amount={cardsAmount}/>

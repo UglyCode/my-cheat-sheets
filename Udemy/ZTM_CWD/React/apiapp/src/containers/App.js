@@ -20,7 +20,7 @@ class App extends Component {
         const {swapiUsersCache, cardsAmount} = this.state;
         let fetchArr =[];
         const cacheLength = swapiUsersCache.length;
-        for (i = cacheLength; i < cardsAmount; i++){
+        for (let i = cacheLength; i < cardsAmount; i++){
             fetchArr.push(fetch(`https://swapi.co/api/people/${i}`));
         }
 
@@ -55,11 +55,11 @@ class App extends Component {
 
 
     render() {
-        const {robots, searchfield, cardsAmount}  = this.state;
-        const filteredRobo = robots.filter(robo => {
+        const {actualUsers, searchfield, cardsAmount}  = this.state;
+        const filteredRobo = actualUsers.filter(robo => {
             return robo.name.toLowerCase().includes(searchfield)
         });
-        if (!robots.length){
+        if (!actualUsers.length){
             return <h1>Loading</h1>
         }
         return (

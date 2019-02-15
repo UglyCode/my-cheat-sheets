@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AmountBox = function ({amountChange, amount}) {
+const AmountBox = ({amountChange, amount}) => {
     return(
         <div className='dib pa2'>
         <input

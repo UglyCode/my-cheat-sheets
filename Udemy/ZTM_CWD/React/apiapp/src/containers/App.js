@@ -16,28 +16,33 @@ class App extends Component {
         }
     }
 
-    _updateSwapiUsers(){
+    async _updateSwapiUsers(){
         const {swapiUsersCache, cardsAmount} = this.state;
+
         let fetchArr =[];
         const cacheLength = swapiUsersCache.length;
-        for (let i = cacheLength; i < cardsAmount; i++){
-            fetchArr.push(fetch(`https://swapi.co/api/people/${i}`));
+        console.log(swapiUsersCache, cardsAmount, cacheLength);
+
+        if (cacheLength < cardsAmount) {
+            for (let i = cacheLength; i < cardsAmount; i++){
+                fetchArr.push(fetch(`https://swapi.co/api/people/${i+1}`)); //0 elem not defined at wsapi
+            }
+
+            let swapiArr = await Promise.all(fetchArr);
+            swapiArr = await Promise.all(swapiArr.map( elem => elem.json()));
+            swapiArr.forEach(elem => swapiUsersCache.push(elem));
+
+            this.setState({ swapiUsersCache: swapiUsersCache});
         }
 
-        Promise.all(fetchArr)
-            .then(swapiArr =>{
-                swapiArr.forEach((elem, i) => {
-                    let obj = elem.json();
-                    obj.id = cacheLength + i;
-                    swapiUsersCache.push(obj);
-                });
-            });
+        console.log(swapiUsersCache.slice(0,cardsAmount));
+        this.setState({actualUsers: swapiUsersCache.slice(0,cardsAmount)});
     }
 
-    async componentDidMount(){
-        const {swapiUsersCache, cardsAmount} = this.state;
-        await this._updateSwapiUsers();
-        this.state({actualUsers: swapiUsersCache.slice(cardsAmount)});
+    componentDidMount(){
+
+        this._updateSwapiUsers();
+
         // fetch('https://jsonplaceholder.typicode.com/users')
         //     .then(response => response.json())
         //     .then(users => this.setState({robots: users}));
@@ -50,7 +55,8 @@ class App extends Component {
 
     onAmountChange = (event) => {
         this.setState({cardsAmount: event.target.value});
-
+        console.log(event.target.value);
+        this._updateSwapiUsers();
     };
 
 

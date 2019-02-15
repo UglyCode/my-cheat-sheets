@@ -6,13 +6,13 @@ const CardList = ({robots})=>{
     return(
     <div>
         {
-            robots.map(elem => {
+            robots.map((elem, i) => {
                 return (
                     <Card
-                        key={elem.id}
-                        id={elem.id}
+                        key={i}
+                        id={i}
                         name={elem.name}
-                        email={elem.email}/>
+                        description={`height: ${elem.height}, mass: ${elem.mass}`}/> //
                 );
             })
         }

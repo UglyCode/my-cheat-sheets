@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "./Card";
 
-const CardList = ({robots})=>{
+const CardList = ({robots, cardClick})=>{
 
     return(
     <div>
@@ -12,7 +12,9 @@ const CardList = ({robots})=>{
                         key={i}
                         id={i}
                         name={elem.name}
-                        description={`height: ${elem.height}, mass: ${elem.mass}`}/> //
+                        description={{height: elem.height}}
+                        cardClick={cardClick}
+                    /> //
                 );
             })
         }

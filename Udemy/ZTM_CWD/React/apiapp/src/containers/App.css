@@ -11,10 +11,17 @@
 
 body{
     background: url('../star-background-star-wars-7.jpg');
+    background-size: cover;
 }
 
 h1{
     font-family: 'STARWARS';
     color: yellow;
     transform: skew(-45deg);
+    width: 500px;
+}
+
+header{
+    width: 500px;
+    margin: 0 auto;
 }

@@ -69,7 +69,7 @@ class App extends Component {
         }
         return (
             <div className='tc'>
-                <h1 className='f1'>ROBO STARS WAR</h1>
+                <header><h1 className='f1'>ROBO STARS WAR</h1></header>
                 <div>
                 <Searchbox searchChange={this.onSearchChange}/>
                 <AmountBox amountChange={this.onAmountChange} amount={cardsAmount}/>

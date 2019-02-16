@@ -10,7 +10,7 @@ class Posts extends Component{
         super(props);
         this.state = {
             postsCache: [],
-            commentsCache: [],
+            // commentsCache: [],
             extendCommentsPosts: [],
             currentRobotObj: undefined
         }
@@ -20,12 +20,12 @@ class Posts extends Component{
 
         Promise.all([
             this.getPosts(),
-            this.getComments(),
+            // this.getComments(),
             this.getInfo(Number(this.props.currentRobot)+1)
         ]).then(fetchArr => this.setState({
             postsCache: fetchArr[0],
             // commentsCache: fetchArr[1],
-            currentRobotObj: this.makeRobotObj(fetchArr[2], this.props.currentRobot)
+            currentRobotObj: this.makeRobotObj(fetchArr[1], this.props.currentRobot)
             })
         );
 

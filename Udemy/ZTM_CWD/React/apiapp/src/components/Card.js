@@ -13,12 +13,14 @@ const Card = ({name, description, id, cardClick}) => {
             <img src = {`https://robohash.org/${id}?size=200x200`} alt = 'robots'/>
             <div>
                 <h3>{name}</h3>
-                <table>
-                    {
-                        Object.keys(description).map(key => {
-                            return <Description name={key} value={description[key]}/>
-                        })
-                    }
+                <table className="f6 w-100 mw8 center" cellSpacing="0">
+                    <thead>
+                {
+                    Object.keys(description).map(keyName => {
+                        return <Description key={id+'/'+keyName} name={keyName} value={description[keyName]}/>
+                    })
+                }
+                    </thead>
                 </table>
             </div>
         </div>

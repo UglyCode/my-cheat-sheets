@@ -13,12 +13,10 @@ class App extends Component {
 
     cardOnClick = (event) => {
       this.setState({currentRobot: event.currentTarget.id});
-      // console.log(event.currentTarget, event.currentTarget.id);
     };
 
     backOnClick = () => {
         this.setState({currentRobot: undefined});
-        // console.log('backcliked');
     };
 
     render() {

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import BackBtn from '../components/BackBtn';
 import Card from '../components/Card';
+import Scroll from '../components/Scroll';
+import PostList from '../components/PostList';
+//TODO: add comments that expanding from posts, add buttons Prev(robot) & Next(robot) around Back button.
 
 class Posts extends Component{
     constructor(props) {
@@ -14,15 +17,14 @@ class Posts extends Component{
     }
 
     componentDidMount(){
-        console.log(this.props.currentRobot);
 
         Promise.all([
             this.getPosts(),
             this.getComments(),
-            this.getInfo(this.props.currentRobot+1)
+            this.getInfo(Number(this.props.currentRobot)+1)
         ]).then(fetchArr => this.setState({
             postsCache: fetchArr[0],
-            commentsCache: fetchArr[1],
+            // commentsCache: fetchArr[1],
             currentRobotObj: this.makeRobotObj(fetchArr[2], this.props.currentRobot)
             })
         );
@@ -33,9 +35,9 @@ class Posts extends Component{
         return fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json());
     }
 
-    getComments(){
-        return fetch('https://jsonplaceholder.typicode.com/comments').then(res => res.json());
-    }
+    // getComments(){
+    //     return fetch('https://jsonplaceholder.typicode.com/comments').then(res => res.json());
+    // }
 
     getInfo(robotId){
         return fetch(`https://swapi.co/api/people/${robotId}`).then(res => res.json());
@@ -61,24 +63,35 @@ class Posts extends Component{
     }
 
     render() {
-        const {currentRobotObj} = this.state;
-        console.log(currentRobotObj);
+        const {currentRobotObj, postsCache} = this.state;
 
-        const output = currentRobotObj ?
-            <Card
-                key={currentRobotObj.id}
-                id={currentRobotObj.id}
-                name={currentRobotObj.name}
-                description={currentRobotObj.description}
-                cardClick={undefined}
-            /> :
-            <h1 className='tc'>Loading</h1> ;
+        if (!currentRobotObj) return <h1 className='tc'>Loading</h1>;
 
+        const userAdtapedId = (currentRobotObj.id+1)%10;
+        const currPosts = postsCache.filter(elem=>{
+            return (elem.userId === userAdtapedId);
+        });
 
         return(
             <div>
                 <BackBtn onClick={this.props.backOnClick}/>
-                {output}
+                <div>
+                    <div className='fl w-20 pa2'>
+                        <Card
+                            key={currentRobotObj.id}
+                            id={currentRobotObj.id}
+                            name={currentRobotObj.name}
+                            description={currentRobotObj.description}
+                            cardClick={undefined}
+                        />
+                    </div>
+
+                    <div className='fl w-80 pa2'>
+                        <Scroll>
+                            <PostList posts={currPosts}/>
+                        </Scroll>
+                    </div>
+                </div>
             </div>
         );
     }

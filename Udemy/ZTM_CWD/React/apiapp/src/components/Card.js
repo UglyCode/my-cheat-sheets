@@ -4,7 +4,7 @@ const Card = ({name, description, id}) => {
 
     return (
 
-        <div className='bg-light-green dib br3 pa3 ma2 grow bw-2 shadow-5-l tc'>
+        <div className='bg-light-blue dib br3 pa3 ma2 grow bw-2 shadow-5-l tc'>
             <img src = {`https://robohash.org/${id}?size=200x200`} alt = 'robots'/>
             <div>
                 <h3>{name}</h3>

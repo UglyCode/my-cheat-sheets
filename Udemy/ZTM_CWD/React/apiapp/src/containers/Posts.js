@@ -82,7 +82,8 @@ class Posts extends Component{
                             id={currentRobotObj.id}
                             name={currentRobotObj.name}
                             description={currentRobotObj.description}
-                            cardClick={undefined}
+                            cardClick={this.props.backOnClick}
+                            helperText='Click here to return!'
                         />
                     </div>
 

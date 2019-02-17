@@ -14,6 +14,7 @@ const CardList = ({robots, cardClick})=>{
                         name={elem.name}
                         description={{height: elem.height}}
                         cardClick={cardClick}
+                        helperText="Click me!!! I'm famous!"
                     /> //
                 );
             })

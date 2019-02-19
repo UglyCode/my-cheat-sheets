@@ -44,15 +44,15 @@ class App extends Component {
     }
 
     onInputChange = (event) => {
-      console.log(event.target.value);
+      this.setState({input: event.target.value});
     };
 
     onSubmit = () =>{
       console.log('gooo');
-        app.models.predict("a403429f2ddf4b49b307e318f00e528b", "https://samples.clarifai.com/face-det.jpg")
+        app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
             .then(
             function(response) {
-                console.log(response);
+                console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
             },
             function(err) {
                 // there was an error
@@ -66,14 +66,16 @@ class App extends Component {
           <Particles className='particles'
               params={particlesOptions}
           />
-        <Navigation />
-        <Logo />
-        <Rank />
+        <div>
+            <Navigation />
+            <Logo />
+            <Rank />
+        </div>
         <ImageLinkForm
             onInputChange={this.onInputChange}
             onSubmit={this.onSubmit}
         />
-        <FaceRecognition />
+        <FaceRecognition imgLink={this.state.input}/>
       </div>
     );
   }

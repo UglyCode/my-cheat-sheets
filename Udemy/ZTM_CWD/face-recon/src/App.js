@@ -94,14 +94,18 @@ class App extends Component {
               />
               <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
               {route === 'home'
-                  ? <div>
-                      <Logo />
-                      <Rank />
-                      <ImageLinkForm
-                          onInputChange={this.onInputChange}
-                          onSubmit={this.onSubmit}
-                      />
-                      <FaceRecognition imgLink={input} imgBoxes={boundingBoxes}/>
+                  ? <div className='flex'>
+                      <div className=' w-10'>
+                        <Logo />
+                      </div>
+                      <div className=' w-80'>
+                          <Rank />
+                          <ImageLinkForm
+                              onInputChange={this.onInputChange}
+                              onSubmit={this.onSubmit}
+                          />
+                          <FaceRecognition imgLink={input} imgBoxes={boundingBoxes}/>
+                      </div>
                   </div>
                   : (
                       route === 'register'

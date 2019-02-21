@@ -41,12 +41,7 @@ class App extends Component {
         super(props);
         this.state = {
             input: '',
-            boundingBoxes: [{
-                top_row: 0,
-                left_col: 0,
-                bottom_row: 0,
-                right_col: 0
-            }],
+            boundingBoxes: [],
             route: 'signIn',
             isSignedIn: false
         }
@@ -106,12 +101,12 @@ class App extends Component {
                           onInputChange={this.onInputChange}
                           onSubmit={this.onSubmit}
                       />
-                      <FaceRecognition imgLink={input} imgBox={boundingBoxes[0]}/>
+                      <FaceRecognition imgLink={input} imgBoxes={boundingBoxes}/>
                   </div>
                   : (
-                      route === 'signIn'
-                      ? <SignIn  onRouteChange={this.onRouteChange}/>
-                      : <Register onRouteChange={this.onRouteChange}/>
+                      route === 'register'
+                      ? <Register onRouteChange={this.onRouteChange}/>
+                      : <SignIn  onRouteChange={this.onRouteChange}/>
                   )
               }
           </div>

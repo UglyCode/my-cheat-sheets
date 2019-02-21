@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Logo from './components/Logo/Logo';
-
+import Register from './components/Register/Register';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
@@ -64,12 +64,14 @@ class App extends Component {
                 left_col: 0,
                 bottom_row: 0,
                 right_col: 0
-            }]
+            }],
+            route: 'signIn',
+            isSignedIn: false
         }
     }
 
     onInputChange = (event) => {
-      this.setState({input: event.target.value});
+        this.setState({input: event.target.value});
     };
 
     onSubmit = () =>{
@@ -97,23 +99,41 @@ class App extends Component {
         })
     }
 
+    onRouteChange = (route) => {
+        if(route === 'signOut'){
+            this.setState({isSignedIn: false})
+        } else if (route === 'home'){
+            this.setState({isSignedIn: true})
+        }
+        this.setState({route: route});
+    };
+
     render() {
-    return (
-      <div className="App">
-          <Particles className='particles'
-              params={particlesOptions}
-          />
-          <Navigation />
-          <SignIn />
-          <Logo />
-          <Rank />
-            <ImageLinkForm
-                onInputChange={this.onInputChange}
-                onSubmit={this.onSubmit}
-            />
-        <FaceRecognition imgLink={this.state.input} imgBox={this.state.boundingBoxes[0]}/>
-      </div>
-    );
+        const {isSignedIn, input, boundingBoxes, route} = this.state;
+        return (
+          <div className="App">
+              <Particles className='particles'
+                  params={particlesOptions}
+              />
+              <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
+              {route === 'home'
+                  ? <div>
+                      <Logo />
+                      <Rank />
+                      <ImageLinkForm
+                          onInputChange={this.onInputChange}
+                          onSubmit={this.onSubmit}
+                      />
+                      <FaceRecognition imgLink={input} imgBox={boundingBoxes[0]}/>
+                  </div>
+                  : (
+                      route === 'signIn'
+                      ? <SignIn  onRouteChange={this.onRouteChange}/>
+                      : <Register onRouteChange={this.onRouteChange}/>
+                  )
+              }
+          </div>
+        );
   }
 }
 

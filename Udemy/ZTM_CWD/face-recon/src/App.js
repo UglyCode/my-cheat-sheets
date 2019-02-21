@@ -34,24 +34,6 @@ const particlesOptions = {
     }
 };
 
-const parceClarifaiAnswer = (response) =>{
-    return response.outputs[0].data.regions.map((elem)=>{
-
-    });
-};
-
-const parseBoundingBox = (width, height, boxObj) => {
-    console.log(width, height, boxObj);
-    let box = {
-        top: height * boxObj.top_row,
-        left: width * boxObj.left_col,
-        bottom: height * (1 - boxObj.bottom_row),
-        right: width * (1 - boxObj.right_col)
-    };
-    console.log(box);
-    return box;
-
-};
 
 class App extends Component {
 

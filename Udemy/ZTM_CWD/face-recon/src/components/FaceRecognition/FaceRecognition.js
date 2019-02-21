@@ -6,7 +6,7 @@ const FaceRecognition = ({imgLink, imgBox}) =>{
     return(
         <div className='centerFlex'>
             <div style={{width: '500px', position: 'relative'}}>
-                <img id='inputImg' alt='your image' src={imgLink} style={{width: '100%', height: 'auto'}}/>
+                <img id='inputImg' alt='target' src={imgLink} style={{width: '100%', height: 'auto'}}/>
                 <div className='bounding-box'
                      style={{
                          top: `${imgBox.top_row}%`,

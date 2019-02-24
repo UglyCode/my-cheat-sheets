@@ -53,8 +53,9 @@ function makeGuess() {
     if (!params.guesses) exit();
 
     params.currValue = Math.ceil((params.max - params.min)/2 + params.min);
-    rl.setPrompt(""+params.currValue);
-    rl.prompt();
+    console.log(params.currValue);
+    // rl.setPrompt(""+params.currValue);
+    // rl.prompt();
     params.guesses -= 1;
 }
 

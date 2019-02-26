@@ -43,7 +43,14 @@ class App extends Component {
             input: '',
             boundingBoxes: [],
             route: 'signIn',
-            isSignedIn: false
+            isSignedIn: false,
+            user: {
+                id: '',
+                name: '',
+                email: '',
+                entries: 0,
+                joined: ''
+            }
         }
     }
 
@@ -52,10 +59,17 @@ class App extends Component {
     };
 
     onSubmit = () =>{
-      console.log('gooo');
       app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
             .then((response) => {
-                console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
+                fetch('http://localhost:3001/image', {
+                    method: 'put',
+                    headers: {'content-type': 'application/json'},
+                    body: JSON.stringify({
+                        id: this.state.user.id
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => this.setState(Object.assign(this.state.user, {entries: data})));
                 this.setState({boundingBoxes: this.calcBoxes(response.outputs[0].data.regions)});
             })
             .catch(function(err) {
@@ -65,7 +79,6 @@ class App extends Component {
     };
 
     calcBoxes(clarifaiRegions){
-        console.log(clarifaiRegions);
         return clarifaiRegions.map((elem)=>{
             let box = elem.region_info.bounding_box;
             box.top_row *= 100;
@@ -75,6 +88,18 @@ class App extends Component {
             return box;
         })
     }
+
+    userUpdate = (data) => {
+        this.setState({
+            user: {
+                id: data.id,
+                name: data.name,
+                email: data.email,
+                entries: data.entries,
+                joined: data.joined
+            }
+        });
+    };
 
     onRouteChange = (route) => {
         if(route === 'signOut'){
@@ -99,7 +124,7 @@ class App extends Component {
                         <Logo />
                       </div>
                       <div className=' w-80'>
-                          <Rank />
+                          <Rank name={this.state.user.name} entries={this.state.user.entries}/>
                           <ImageLinkForm
                               onInputChange={this.onInputChange}
                               onSubmit={this.onSubmit}
@@ -109,8 +134,8 @@ class App extends Component {
                   </div>
                   : (
                       route === 'register'
-                      ? <Register onRouteChange={this.onRouteChange}/>
-                      : <SignIn  onRouteChange={this.onRouteChange}/>
+                      ? <Register userUpdate={this.userUpdate} onRouteChange={this.onRouteChange}/>
+                      : <SignIn  userUpdate={this.userUpdate} onRouteChange={this.onRouteChange}/>
                   )
               }
           </div>

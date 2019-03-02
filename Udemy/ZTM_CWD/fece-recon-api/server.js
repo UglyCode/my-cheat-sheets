@@ -6,7 +6,7 @@ const knex = require('knex');
 const register = require('./controllers/register');
 const signIn = require('./controllers/signIn');
 const profile = require('./controllers/profile');
-const imageIncrease = require('./controllers/imageIncrease');
+const imageIncrease = require('./controllers/image');
 
 
 const pg = knex({
@@ -36,6 +36,8 @@ app.post('/register', (req,res) => register.handleRegister(req, res, pg, bcrypt)
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, pg)});
 
 app.put('/image', (req, res) => {imageIncrease.handleImageIncrease(req, res, pg)});
+
+app.post('/image', (req, res) => {imageIncrease.getFaceRecognitionObject(req, res)});
 
 
 

@@ -8,13 +8,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
-
-// initialize with your api key. This will also work in your browser via http://browserify.org/
-
-const app = new Clarifai.App({
-    apiKey: '2c149afabd8141448623c02e728db777'
-});
 
 const particlesOptions = {
     particles: {
@@ -59,8 +52,15 @@ class App extends Component {
         this.setState({input: event.target.value});
     };
 
-    onSubmit = () =>{
-      app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    onSubmit = () => {
+        fetch('http://localhost:3001/image', {
+            method: 'post',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify({
+                input: this.state.input
+            })
+        })
+            .then(response => response.json())
             .then((response) => {
                 fetch('http://localhost:3001/image', {
                     method: 'put',

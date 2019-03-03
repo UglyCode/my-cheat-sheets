@@ -8,6 +8,7 @@ const signIn = require('./controllers/signIn');
 const profile = require('./controllers/profile');
 const imageIncrease = require('./controllers/image');
 
+const PORT = process.env.PORT || 3001;
 
 const pg = knex({
    client: 'pg',
@@ -49,6 +50,6 @@ app.post('/image', (req, res) => {imageIncrease.getFaceRecognitionObject(req, re
 //    // res = false
 // });
 
-app.listen(3001, ()=>{
-   console.log('server started at 3001 port');
+app.listen(PORT, ()=>{
+   console.log(`server started at port ${PORT}--`);
 });

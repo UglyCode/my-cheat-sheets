@@ -10,12 +10,11 @@ const googleDatabase = [
     'mycats.it'
 ];
 
-const googleSearch = (searchString) => {
-    const matches = googleDatabase.filter((site) =>{
+const googleSearch = (searchString, db) => {
+    const matches = db.filter((site) =>{
         return site.includes(searchString);
     });
-
     return matches.length > 3 ? matches.slice(0,3) : matches;
 };
 
-console.log(googleSearch('cats'));
+module.exports = googleSearch;

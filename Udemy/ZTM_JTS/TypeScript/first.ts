@@ -56,7 +56,7 @@ let error = ():never => {
 
 //interface
 interface GirlArmy {
-    count: number,
+    count?: number,
     boobs: 'string',
     fuckeble: boolean
 }
@@ -64,3 +64,38 @@ interface GirlArmy {
 let msuculusDescribeGirl = (girl: GirlArmy) => {
   console.log(girl);
 };
+
+//Type assertions
+interface ManArmy {
+    count: number,
+    length: 'string',
+    hasMoney: boolean
+}
+
+let man = {} as ManArmy;
+man.count;
+
+
+//function
+let msuculusDescribeMan = (girl: ManArmy): void => {
+    console.log(girl);
+};
+
+//Class
+class Human {
+    private readonly name: string = 'Ant'; //public, readonly
+    constructor(name: string){
+        this.name = name;
+    }
+
+    greet(): string {
+        return `I am ${this.name}`
+    }
+}
+
+let nya = new Human('nya');
+nya.greet();
+
+
+//Union type
+let mess: string|number = 5;

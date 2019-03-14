@@ -47,3 +47,24 @@ var error = function () {
 var msuculusDescribeGirl = function (girl) {
     console.log(girl);
 };
+var man = {};
+man.count;
+//function
+var msuculusDescribeMan = function (girl) {
+    console.log(girl);
+};
+//Class
+var Human = /** @class */ (function () {
+    function Human(name) {
+        this.name = 'Ant'; //public, readonly
+        this.name = name;
+    }
+    Human.prototype.greet = function () {
+        return "I am " + this.name;
+    };
+    return Human;
+}());
+var nya = new Human('nya');
+nya.greet();
+//Union type
+var mess = 5;

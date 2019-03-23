@@ -13,7 +13,7 @@ rl.on('line', function(line) {
     } else if (expect === 'newInput') {
         console.log(getResult(line, case_count));
         (case_count === num_test_cases) ? rl.close() : case_count++;
-    }
+}
 }).on('close',function(){
     process.exit(0);
 });
@@ -24,7 +24,7 @@ function getResult(inputStr, case_count) {
     var maxDigit = digits.length;
     for (i = 0; i < digits.length; i++) {
         if (digits[i]%2){
-            var presses = calcButtonPresses(inputStr.slice(i), maxDigit-i, (digits[i] == 9));
+            var presses = calcButtonPresses(inputStr.slice(i), maxDigit-i, ((digits[i] == 9) && (i > 0)));
             return 'Case #' + case_count + ': ' + presses;
         }
     }

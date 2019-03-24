@@ -65,7 +65,7 @@ function getMinimumHours(skillsArr, N, P) {
     } else {
         while (indexArr=getNextCombination(indexArr, N, P)){
             teamArr = indexArr.map(function (elem) {
-                return skillsArr[elem];
+               return skillsArr[elem];
             });
             minH = minH ? Math.min(minH, countHours(teamArr)) : countHours(teamArr);
         }

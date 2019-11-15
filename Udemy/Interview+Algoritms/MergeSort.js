@@ -16,7 +16,6 @@ function mergeSort (array) {
 }
 
 function merge(left=[], right=[]){
-    console.log('left||right',left, right);
     let i=0;
     let j=0;
     let leftL = left.length;
@@ -24,7 +23,6 @@ function merge(left=[], right=[]){
     let mergedArray = [];
 
     while (true){
-
         if (left[i] > right[j]){
             mergedArray.push(right[j]);
             j++;
@@ -34,22 +32,14 @@ function merge(left=[], right=[]){
         }
 
         if (i===leftL){
-            for (j; j < rightL; j++){
-                mergedArray.push(right[j]);
-            }
-            console.log('merged', mergedArray);
+            for (j; j < rightL; j++) mergedArray.push(right[j]);
             return mergedArray;
         } else if (j===rightL){
-            for (i; i < leftL; i++){
-                mergedArray.push(left[i]);
-            }
-            console.log('merged', mergedArray);
+            for (i; i < leftL; i++) mergedArray.push(left[i]);
             return mergedArray;
         }
     }
-
 }
-
 
 const answer = mergeSort(numbers);
 console.log(answer);
